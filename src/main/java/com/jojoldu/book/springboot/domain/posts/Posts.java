@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter // Lombok -> 코드 단순화 (모든 필드의 Getter 메소드 자동생성)
 @NoArgsConstructor // Lombok -> 코드 단순화 (기본 생성자 자동 추가)
 @Entity // JPA -> 테이블과 링크될 클래스 => SalsesManager.java -> salse_manager (table)
-public class Posts { // 실제 DB의 테이블과 매칭될 클래스, Entity Class
+public class Posts extends BaseTimeEntity{ // 실제 DB의 테이블과 매칭될 클래스, Entity Class
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK 생성 규칙, auto_increment해준다
@@ -35,11 +35,16 @@ public class Posts { // 실제 DB의 테이블과 매칭될 클래스, Entity Cl
     // 값변경이 필요할 경우 해당 이벤트에 맞는 public method를 호출하여 변경
     // => 책에서는 @Builder 생성자나 빌더나 생성 시점에 값을 채워준다 -> 생성자의 경우 지금 채워야 할 필드가 무엇인지 명확히 지정할 수 없다
 
-    @Builder // 패당 클래스의 빌더 패턴 클래스를 생성-> 생성자 상단 시 해당 생성자에 포함된 필드만 빌더에 포함
+    @Builder // builder 패턴: 패당 클래스의 빌더 패턴 클래스를 생성-> 생성자 상단 시 해당 생성자에 포함된 필드만 빌더에 포함
     public Posts(String title, String content, String author) {
         this.title = title;
         this.content = content;
         this.author = author;
+    }
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
 }
