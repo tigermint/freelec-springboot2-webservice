@@ -25,6 +25,7 @@ dependencies {
 
     // lombok
     implementation('org.projectlombok:lombok')
+    implementation 'org.jetbrains:annotations:20.1.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.testng:testng:7.1.0'
     testImplementation 'junit:junit:4.13.1'
