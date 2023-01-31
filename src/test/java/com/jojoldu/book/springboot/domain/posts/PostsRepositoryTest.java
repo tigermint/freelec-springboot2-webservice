@@ -32,6 +32,7 @@ class PostsRepositoryTest {
     public void 게시글저장_불러오기() {
         //given
         String title = "테스트 게시글";
+
         String content = "테스트 본문";
 
         // 테이블 posts에 insert/update 쿼리를 실행
